@@ -9,11 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-<<<<<<< HEAD
     "start": "tsc && node ./build/index.js",
-=======
-    "start": "node ./build/index.js",
->>>>>>> ae5f8988eccc8523d42a50854ae10764f7731e9a
     "dev": "ts-node-dev src/index.ts"
   },
   "author": "",
