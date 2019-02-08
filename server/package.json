@@ -2,14 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/index.js",
+  "main": "index.js",
   "engines": {
     "node": "10.x",
     "npm": "6.4.1"
   },
   "scripts": {
     "build": "tsc",
-    "start": "build/index.js",
+    "start": "node ./build/index.js",
     "dev": "ts-node-dev src/index.ts"
   },
   "author": "",
