@@ -12,11 +12,17 @@ function authRoutes(app) {
     app.get('/auth/facebook', passport_1.default.authenticate('facebook', {
         scope: ['user_friends', 'manage_pages']
     }));
+    app.get('/callback', passport_1.default.authenticate('auth0', { failureRedirect: '/login' }), function (req, res) {
+        if (!req.user) {
+            throw new Error('user null');
+        }
+        res.redirect("/");
+    });
+    app.get('/login', passport_1.default.authenticate('auth0', {}), function (_req, res) {
+        res.redirect("/");
+    });
     app.get('/auth/google/callback', passport_1.default.authenticate('google'));
     app.get('/auth/facebook/callback', passport_1.default.authenticate('facebook'));
-    app.get('/tessy', function (_req, res) {
-        res.send("Sending..");
-    });
 }
 exports.authRoutes = authRoutes;
 ;
