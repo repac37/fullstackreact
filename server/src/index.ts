@@ -15,6 +15,8 @@ mongoose.connect(process.env.MONGO_URI||"", { useNewUrlParser: true }, function(
 const app = express();
 passPortCall();
 
+console.log("hello");
+
 authRoutes(app);
 
 const PORT:string|number|undefined = process.env.PORT || 5000;
