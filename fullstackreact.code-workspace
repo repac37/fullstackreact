@@ -2,13 +2,7 @@
 	"folders": [
 		{
 			"path": "D:\\Develop\\Udemy\\fullstackreact"
-		},
-		{
-			"path": "D:\\Develop\\Udemy\\fullstackreact\\server"
-		},
-		{
-			"path": "D:\\Develop\\Udemy\\fullstackreact\\frontend"
-		},
+		}
 	],
 	"settings": {}
 }
