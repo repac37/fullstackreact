@@ -1,21 +1,33 @@
 import express from 'express';
-import { passPortCall } from './services/passport';
-import { authRoutes } from './routes/authRoutes';
 import mongoose from 'mongoose';
+import cookieSession from "cookie-session";
+import passport from "passport";
 import {userSchema} from "./models/User";
+import { authRoutes } from './routes/authRoutes';
 //import session from 'express-session';
 //import bodyParser from "body-parser";
 
-userSchema();
-console.log("MONGO_URI"+process.env.MONGO_URI)
-mongoose.connect(process.env.MONGO_URI||"", { useNewUrlParser: true }, function(err) {
-    if (err) { return console.error('failed');}
-  });
+mongoose.model('users', userSchema);
 
-const app = express();
+import { passPortCall } from './services/passport';
 passPortCall();
 
-console.log("hello");
+
+mongoose.connect(process.env.MONGO_URI||"", { useNewUrlParser: true }, function(err) {
+  if (err) { return console.error('failed');}
+});
+
+const app = express();
+
+app.use(
+  cookieSession({
+    maxAge: 30*24*60*60*1000,
+    keys: [process.env.COOKIE_KEY||""]
+  })
+)
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 authRoutes(app);
 

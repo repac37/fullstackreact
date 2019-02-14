@@ -1,11 +1,5 @@
-import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export function userSchema(){
-    const { Schema } = mongoose;
-
-    const userSchema = new Schema({
-    auth0Id: String
+export const userSchema: Schema = new Schema({
+        authId: String
     });
-
-    mongoose.model('users', userSchema);
-}
