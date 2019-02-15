@@ -4,14 +4,13 @@ import cookieSession from "cookie-session";
 import passport from "passport";
 import {userSchema} from "./models/User";
 import { authRoutes } from './routes/authRoutes';
+import { passPortCall } from './services/passport';
 //import session from 'express-session';
 //import bodyParser from "body-parser";
 
 mongoose.model('users', userSchema);
 
-import { passPortCall } from './services/passport';
 passPortCall();
-
 
 mongoose.connect(process.env.MONGO_URI||"", { useNewUrlParser: true }, function(err) {
   if (err) { return console.error('failed');}

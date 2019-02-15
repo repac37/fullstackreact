@@ -3,19 +3,21 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 import mongoose from 'mongoose';
 
 
-const User = mongoose.model('users');
 
-passport.serializeUser<any, any>((user, done) => {
-    done(undefined, user.id);
-  });
-
-passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user:any) => {
-      done(err, user);
-  });
-});
 
 export function passPortCall(){
+    
+    const User = mongoose.model('users');
+
+    passport.serializeUser<any, any>((user, done) => {
+        done(undefined, user.id);
+    });
+
+    passport.deserializeUser((id, done) => {
+        User.findById(id, (err, user:any) => {
+        done(err, user);
+        });
+    });
 
     passport.use( new FacebookStrategy(
         {
