@@ -9,8 +9,8 @@ import { passPortCall } from './services/passport';
 //import bodyParser from "body-parser";
 
 mongoose.model('users', userSchema);
-
-passPortCall();
+const User: any = mongoose.model('users');
+passPortCall(User);
 
 mongoose.connect(process.env.MONGO_URI||"", { useNewUrlParser: true }, function(err) {
   if (err) { return console.error('failed');}
