@@ -17,7 +17,8 @@ export function passPortCall(User:any){
         {
             clientID: process.env.FACEBOOK_CLIENT_ID||"",
             clientSecret: process.env.FACEBOOK_SECRET||"",
-            callbackURL: '/auth/facebook/callback'
+            callbackURL: process.env.FACEBOOK_URL+'auth/facebook/callback',
+            passReqToCallback : true
         }, 
         (_accessToken:any, _refreshToken:any, profile:any, done:any) => {
                 User.findOne({authId: profile.id})
