@@ -9,8 +9,10 @@
   },
   "scripts": {
     "compile": "tsc && node -r dotenv/config ./build/index.js",
-    "dev": "nodemon -e ts  --exec \"npm run compile\"",
+    "server": "nodemon -e ts --exec \"npm run compile\"",
     "start": "node ./build/index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "tsc"
   },
   "author": "",
@@ -32,6 +34,7 @@
     "@types/mongoose": "^5.3.12",
     "@types/node": "^10.12.21",
     "@types/passport": "^1.0.0",
+    "@types/passport-facebook": "^2.1.8",
     "nodemon": "^1.18.9"
   }
 }

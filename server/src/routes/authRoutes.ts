@@ -10,7 +10,8 @@ export function authRoutes(app: express.Application){
         })
     );
 
-    app.get('auth/facebook/callback', passport.authenticate('facebook'));
+    app.get('/auth/facebook/callback',
+        passport.authenticate('facebook'));
     
     app.get('/api/logout',(req,res)=>{
         req.logOut();

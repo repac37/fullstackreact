@@ -17,11 +17,11 @@ export function passPortCall(User:any){
         {
             clientID: process.env.FACEBOOK_CLIENT_ID||"",
             clientSecret: process.env.FACEBOOK_SECRET||"",
-            callbackURL: process.env.FACEBOOK_URL+'auth/facebook/callback',
-            passReqToCallback : true
+            callbackURL: process.env.FACEBOOK_URL+'auth/facebook/callback'
         }, 
         (_accessToken:any, _refreshToken:any, profile:any, done:any) => {
-                User.findOne({authId: profile.id})
+            console.log(":::::::::::::::::::::"+profile);    
+            User.findOne({authId: profile.id})
                     .then((existingUser:any)=>{
                         if(existingUser){
                             done(null,existingUser);

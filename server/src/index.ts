@@ -5,8 +5,6 @@ import passport from "passport";
 import {userSchema} from "./models/User";
 import { authRoutes } from './routes/authRoutes';
 import { passPortCall } from './services/passport';
-//import session from 'express-session';
-//import bodyParser from "body-parser";
 
 mongoose.model('users', userSchema);
 const User: any = mongoose.model('users');
@@ -29,7 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 authRoutes(app);
-
+console.log(":::::::::::::::::::::");  
 const PORT:string|number|undefined = process.env.PORT || 5000;
 
 app.listen(PORT, function () {
