@@ -9,8 +9,10 @@
   },
   "scripts": {
     "compile": "tsc && node -r dotenv/config ./build/index.js",
-    "dev": "nodemon -e ts  --exec \"npm run compile\"",
+    "server": "nodemon -e ts --exec \"npm run compile\"",
     "start": "node ./build/index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "tsc"
   },
   "author": "",
