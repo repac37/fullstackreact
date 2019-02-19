@@ -9,7 +9,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Editit <code>src/App.js</code> and save to reload.
           </p>
           <a href="/auth/facebook">Sign in with facebook</a>
         </header>
